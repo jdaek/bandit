@@ -1,0 +1,16 @@
+import json
+
+def load_config(filename):
+    with open(filename) as f:  # Potential vulnerability: missing try-except block
+        config = json.load(f)
+    return config
+
+def calculate_square_root(x):
+    return x ** 0.5  # If x is negative, this could cause issues
+
+def main():
+    config = load_config('config.json')  # User input being read from the file
+    print(f"The square root of the number is: {calculate_square_root(config['number'])}")
+
+if __name__ == "__main__":
+    main()
